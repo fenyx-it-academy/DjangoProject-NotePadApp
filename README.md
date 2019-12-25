@@ -1,1 +1,1 @@
-# djangoproject-NotePadApp
+# DjangoProject-NotePadApp
