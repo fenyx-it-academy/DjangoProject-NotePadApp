@@ -30,7 +30,7 @@ def index(request):
 def about(request):
     return render(request, "about.html")
 
-@login_required(login_url = "user:login")                              # user disinda birinin linklere girmesiyle yonlendirilecek sayfa icin
+@login_required(login_url = "user:login")        # user disinda birinin linklere girmesiyle yonlendirilecek sayfa icin
 def dashboard(request):
     articles = Article.objects.filter(author = request.user)
     context = {

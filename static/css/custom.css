@@ -1,0 +1,190 @@
+/* body{
+    background-color: #DABEBA;
+} */
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 2px;
+}
+.clear{
+    clear: both;
+}
+.logo{
+    float: left;
+}
+
+a{
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 14px; 
+    
+}
+
+
+
+/* Editor ekrani bunun icinde */
+
+.wrapper{
+    /* background: url('../img/cosmos.jpg') no-repeat center 100%; */
+    background: rgb(2,0,36);
+    background: linear-gradient(to bottom,  #929D9E  0%,  rgb(75, 79, 80)  100%);
+         
+}
+
+
+.stickies{
+    height:  1000px;
+    
+}
+
+.stickies .container{
+    
+
+}
+
+
+
+.sticky{
+    position: relative;
+    
+   
+}
+
+.sticky p.text{
+    position: absolute;
+    top: 0;
+}
+
+.stickies .box{
+    border: 1px solid red;
+    padding: 5px;
+    width: 20%;
+    float: left;
+    height: 300px;
+    box-sizing: border-box;
+}
+
+.stickies .box .title{
+    font-size: 18px;
+    font-family: Montserrat;
+    text-align: center;
+}
+.stickies .box .content{
+    font-size: 12px;
+    font-family: Montserrat;
+    text-align: left;
+}
+
+/*Sticky Test*/
+*{
+    margin:0;
+    padding:0;
+  }
+  notes body{
+    font-family:arial,sans-serif;
+    font-size:100%;
+    margin:1em;
+    background:#666;
+    color:#fff;
+  }
+  notes h2,p{
+    font-size:100%;
+    font-weight:normal;
+  }
+  notes ul,li{
+    list-style:none;
+  }
+  ul.notes{
+    overflow:hidden;
+    padding:3em;
+  }
+  ul.notes li a{
+    text-decoration:none;
+    color:#000;
+    background:#ffc;
+    display:block;
+    height:10em;
+    width:10em;
+    padding:1em;
+    -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    -moz-transition:-moz-transform .15s linear;
+    -o-transition:-o-transform .15s linear;
+    -webkit-transition:-webkit-transform .15s linear;
+  }
+  ul.notes li{
+    margin:1em;
+    float:left;
+  }
+  ul.notes li h2{
+    font-size:140%;
+    font-weight:bold;
+    padding-bottom:10px;
+  }
+  ul.notes li p{
+    font-family:"Reenie Beanie",arial,sans-serif;
+    font-size:180%;
+  }
+  ul.notes li a{
+    -webkit-transform: rotate(-6deg);
+    -o-transform: rotate(-6deg);
+    -moz-transform:rotate(-6deg);
+  }
+  ul.notes li:nth-child(even) a{
+    -o-transform:rotate(4deg);
+    -webkit-transform:rotate(4deg);
+    -moz-transform:rotate(4deg);
+    position:relative;
+    top:5px;
+    background:#cfc;
+  }
+  ul.notes li:nth-child(3n) a{
+    -o-transform:rotate(-3deg);
+    -webkit-transform:rotate(-3deg);
+    -moz-transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+    background:#ccf;
+  }
+  ul.notes li:nth-child(5n) a{
+    -o-transform:rotate(5deg);
+    -webkit-transform:rotate(5deg);
+    -moz-transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+  }
+  ul.notes li a:hover,ul li a:focus{
+    box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    position:relative;
+    z-index:5;
+  }
+  ol{text-align:center;}
+  ol li{display:inline;padding-right:1em;}
+  ol li a{color:#fff;}
+
+
+
+ul.navigation{
+    width: 300px;
+    margin: 0 auto;
+}
+ul.navigation li{
+    float: left;
+    padding: 10px ;
+}
+
+ul.navigation li a{
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 14px; 
+    color: brown;
+}
+ul.navigation li a:hover{
+    color: coral;
+}
