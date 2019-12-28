@@ -80,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'social_django.context_processors.backends',  # <-- Here
                 'social_django.context_processors.login_redirect', # <-- Here
+                
             ],
         },
     },

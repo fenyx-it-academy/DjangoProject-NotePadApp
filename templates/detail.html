@@ -33,11 +33,37 @@
       <p class="lead">
           {{article.content|safe}}
       </p>
-      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="fa fa-facebook fa-4x" style="color:#3b5998"></a>
-      <a href="https://twitter.com/home?status={{ share_string }} %20{{ request.build_absolute_uri }}" target="_blank" class="fa fa-twitter fa-4x" style="color:#4099FF"></a>
-      <a href="https://www.google.com/share?url={ request.build_absolute_uri }}"  target="_blank" class="fa fa-google fa-4x" style="color:#D34836"></a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }} title={{note.header}}source={{ request.build_absolute_uri }}" target="_blank" class="fa fa-linkedin fa-4x" style="color:#007bb6"></a>
+        <div class="row omb_row-sm-offset-3 omb_socialButtons">
+          <div class="col-xs-4 col-sm-2">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-lg btn-block omb_btn-facebook" style="color:#3b5998">
+              <i class="fa fa-facebook visible-xs"></i>
+              <span class="hidden-xs">Facebook</span>
+            </a>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+            <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+              <i class="fa fa-twitter visible-xs"></i>
+              <span class="hidden-xs">Twitter</span>
+            </a>
+          </div>	
+          <div class="col-xs-4 col-sm-2">
+            <a href="#" class="btn btn-lg btn-block omb_btn-google">
+              <i class="fa fa-google-plus visible-xs"></i>
+              <span class="hidden-xs">Google+</span>
+            </a>
+          </div>	
+    </div>
 
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="fa fa-facebook fa-4x" style="color:#3b5998"></a>
+      <a href="https://twitter.com/compose/tweet/?status={{article.title}}text={{article.content}}%20&amp;url={{ request.build_absolute_uri }}"target="_blank" class="fa fa-twitter fa-4x" style="color:#4099FF"></a>
+      <a href="https://www.google.com/share?url={ request.build_absolute_uri }}"  target="_blank" class="fa fa-google fa-4x" style="color:#D34836"></a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }} title={{article.text}}source={{ request.build_absolute_uri }}" target="_blank" class="fa fa-linkedin fa-4x" style="color:#007bb6"></a>  
+      {% load social_share %}
+
+      {% post_to_facebook object_or_url "Post to Facebook!" %}
+      {% post_to_twitter "My Note: {{article.title}} {{article.content}}. Check it out!" object_or_url "Post to Twitter" %}
+      {% post_to_linkedin object.title object_or_url "Post to LinkedIn" %}
+      {% send_email object.title "My Note:{{article.content|safe}}. Check it out!" object_or_url "Share via email" %}
       <hr>
 
       <h4>Comments</h4>

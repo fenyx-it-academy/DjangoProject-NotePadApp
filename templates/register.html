@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-
+{% load socialaccount %}
 {% load crispy_forms_tags %}
 
 
@@ -14,7 +14,14 @@
 
                 {{form|crispy}}
                 <br>
-                <button type="submit" class="btn btn-danger">Enter</button>  
+                <button type="submit" class="btn btn-danger">Enter</button>
+                <p>Or Register With</p>
+                <div class="wrapper">
+                        <a href="{% url 'social:begin' 'github' %}"><i class="fa  fa-3x fa-github"style="color:#24292e"></i></a>
+                        <a href="{% provider_login_url 'google' %}"><i class="fa fa-3x fa-google"style="color:#D34836"></i></a>
+                        <a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-3x fa-facebook-square"style="color:#3b5998"></i></a>
+                        <a href="{% url 'social:begin' 'twitter' %}"><i class="fa fa-3x fa-twitter-square"style="color:#4099FF"></i>
+                </div></a>  
             </form>
         </div>
     </div>

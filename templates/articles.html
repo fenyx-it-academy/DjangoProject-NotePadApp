@@ -63,8 +63,8 @@
       </p>
       <button disabled="disabled">Share With:</button><br>
       <a style="float: right" href="{% url 'article:detail' article.id %}" class="btn btn-danger">Continue Read</a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="fa fa-facebook fa-4x" style="color:#3b5998"></a>
-      <a href="https://twitter.com/home?status={{ share_string }} %20{{ request.build_absolute_uri }}" target="_blank" class="fa fa-twitter fa-4x" style="color:#4099FF"></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_string }}" target="_blank" class="fa fa-facebook fa-4x" style="color:#3b5998"></a>
+      <a href="https://twitter.com/home?status={{ share_string }} %20{{ request.build_absolute_uri }}" text='{{Article.content}}'target="_blank" class="fa fa-twitter fa-4x" style="color:#4099FF"></a>
       <a href="https://www.google.com/share?url={ request.build_absolute_uri }}"  target="_blank" class="fa fa-google fa-4x" style="color:#D34836"></a>
       <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }} title={{Article.title}}&summary={{Article.content}}&source={{ request.build_absolute_uri }}" target="_blank" class="fa fa-linkedin fa-4x" style="color:#007bb6"></a>
       

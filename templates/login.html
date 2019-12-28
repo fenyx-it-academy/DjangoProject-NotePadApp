@@ -15,11 +15,13 @@
                 <br>
                 <button type="submit" class="btn btn-danger">Enter</button>  
                 <a class="nav-brand" href="{% url 'password_reset' %}">&nbsp;&nbsp;&nbsp;&nbsp;Forget your Password?</a><br><br>
-                <button disabled="disabled"><p><strong>-- OR Login With  --</strong></p></button><br>
-                <a href="{% url 'social:begin' 'github' %}"  class="fa fa-github fa-2x"style="color:#24292e">GitHub</a><br>
-                <a href="{% url 'social:begin' 'twitter' %}" class="fa fa-twitter fa-2x"style="color:#4099FF">Twitter</a><br>
-                <a href="{% url 'social:begin' 'facebook' %}"  class="fa fa-facebook fa-2x"style="color:#3b5998">Facebook</a><br>
-                <a href="{% provider_login_url 'google' %}"  class="fa fa-google fa-2x" style="color:#D34836">Google</a>
+                <p><strong>OR Sign In With</strong></p><br>
+                <div class="wrapper">
+                        <a target="_blank" href="{% url 'social:begin' 'github' %}"><i class="fa  fa-3x fa-github"style="color:#24292e"></i></a>
+                        <a target="_blank" href="{% provider_login_url 'google' %}"><i class="fa fa-3x fa-google"style="color:#D34836"></i></a>
+                        <a target="_blank" href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-3x fa-facebook-square"style="color:#3b5998"></i></a>
+                        <a target="_blank" href="{% url 'social:begin' 'twitter' %}"><i class="fa fa-3x fa-twitter-square"style="color:#4099FF"></i>
+                </div></a>
             </form>
         </div>
     </div>
