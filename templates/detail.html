@@ -33,6 +33,11 @@
       <p class="lead">
           {{article.content|safe}}
       </p>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="fa fa-facebook fa-4x" style="color:#3b5998"></a>
+      <a href="https://twitter.com/home?status={{ share_string }} %20{{ request.build_absolute_uri }}" target="_blank" class="fa fa-twitter fa-4x" style="color:#4099FF"></a>
+      <a href="https://www.google.com/share?url={ request.build_absolute_uri }}"  target="_blank" class="fa fa-google fa-4x" style="color:#D34836"></a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }} title={{note.header}}source={{ request.build_absolute_uri }}" target="_blank" class="fa fa-linkedin fa-4x" style="color:#007bb6"></a>
+
       <hr>
 
       <h4>Comments</h4>
