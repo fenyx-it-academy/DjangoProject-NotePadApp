@@ -35,21 +35,21 @@
       </p>
       <hr>
 
-      <h4>Comments</h4>
+      <h4>Comments:</h4>
       <hr>
       <!-- Comments Form -->
       {% if comments %}
       <!-- Single Comment -->
-      {% for comment in comments %}
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">{{comment.comment_author}}</h5>
-            {{comment.comment_date}}<br>
-            {{comment.comment_content}}
+        {% for comment in comments %}
+          <div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <div class="media-body">
+              <h5 class="mt-0">{{comment.comment_author}}</h5>
+              {{comment.comment_date}}<br>
+              {{comment.comment_content}}
+            </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
       {% else %}
       <div class="alert alert-danger">
         There is not any comment! Be the first to comment.
@@ -74,13 +74,7 @@
           </form>
         </div>
       </div>
-
-
-
     </div>
-
-
-
   </div>
 
 {% endblock body %}

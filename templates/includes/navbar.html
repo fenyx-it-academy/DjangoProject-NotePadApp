@@ -38,20 +38,20 @@
           <ul class="navbar-nav mr-auto">
           {% if request.user.is_authenticated %}
             <li class="nav-item active">
-              <a class="nav-brand" href="{% url 'article:dashboard' %}">Control Panel&nbsp;&nbsp;</a>
+              <a href="{% url 'article:dashboard' %}" class="nav-link text-white">Control Panel</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-brand" href="{% url 'user:change_password' %}">Account&nbsp;&nbsp;</a>
+              <a href="{% url 'user:account' %}" class="nav-link text-white">Account</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-brand" href="{% url 'user:logout' %}">Logout&nbsp;&nbsp;</a>
+                <a href="{% url 'user:logout' %}" class="nav-link text-white">Logout</a>
               </li>
           {% else %}
             <li class="nav-item active">
-                <a class="nav-brand" href="{% url 'user:login' %}">Login&nbsp;&nbsp;</a>
+                <a href="{% url 'user:login' %}"  class="nav-link text-white">Login</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-brand" href="{% url 'user:register' %}">Register</a>
+                <a href="{% url 'user:register' %}" class="nav-link text-white">Register</a>
               </li>
           {% endif %}
 

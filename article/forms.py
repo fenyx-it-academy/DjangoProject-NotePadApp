@@ -5,5 +5,4 @@ from .models import Article
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ["title", "content","article_image"]
- 
+        fields = ["title", "content","article_image"]           # seçilen articlede ekranda görünecek kısımlar belirlendi
