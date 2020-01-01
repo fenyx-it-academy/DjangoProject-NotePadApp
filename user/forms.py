@@ -1,4 +1,7 @@
 from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
 
 
 class LoginForm(forms.Form):
@@ -6,11 +9,11 @@ class LoginForm(forms.Form):
     password = forms.CharField(label= "Password", widget= forms.PasswordInput)
 
 
-class RegisterForm(forms.Form):
+class RegisterForm(UserCreationForm):      # burada UserCreationForm kullaninca otomatik form olusturur dolayisiyla password kismini cikarabiliriz. Ama forms.Form kullanirsak eklemek zorundayiz 
     username = forms.CharField(max_length= 50, label= "Username")
     email = forms.EmailField(label="E-mail")
-    password = forms.CharField(max_length= 20, label= "Password", widget= forms.PasswordInput)
-    confirm = forms.CharField(max_length= 20, label= "Password Confirmation", widget= forms.PasswordInput)
+    #password = forms.CharField(max_length= 20, label= "Password", widget= forms.PasswordInput)
+    #confirm = forms.CharField(max_length= 20, label= "Password Confirmation", widget= forms.PasswordInput)
     
 
 
@@ -30,4 +33,17 @@ def clean(self):
         "password": password,
     }
     return values
+
+
+class EditProfileForm(UserChangeForm):
+    class Meta:
+        model = User
+        fields = (
+            'email',
+            'first_name',
+            'last_name',
+            'password'
+        )
+        
+
 

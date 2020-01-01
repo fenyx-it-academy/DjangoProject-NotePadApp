@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, render_to_response
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, EditProfileForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
@@ -111,16 +111,16 @@ def change_username(request):
 
     if request.method == 'POST':
         
-        form = UserChangeForm(request.POST, request.POST)
+        form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)            # Important!
+            user_save = form.save()
+            update_session_auth_hash(request, user_save)            # Important!
             messages.success(request, 'Your username was successfully updated!')
             return redirect('index')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
-        form = UserChangeForm()
+        form = EditProfileForm(instance=request.user)
     return render(request, 'change_username.html', {
         'form': form
     })
