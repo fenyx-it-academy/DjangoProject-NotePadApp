@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'ckeditor',
     'django_cleanup',
-    'social_django', 
+    'social_django',
     'django_social_share',
     'allauth',
     'allauth.account',

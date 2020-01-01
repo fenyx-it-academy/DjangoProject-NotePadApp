@@ -4,6 +4,8 @@ from .models import Article, Comment
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from urllib.parse import quote_plus 
+
 
 
 # Create your views here.
@@ -17,7 +19,11 @@ def articles(request):
 
     articles = Article.objects.all()
 
-    return render(request, "articles.html", {"articles": articles})
+    context = {
+        'articles':articles,
+    }
+
+    return render(request, "articles.html", context)
 
 
 def index(request):
@@ -56,10 +62,15 @@ def addarticle(request):
 def detail(request, id):
     #article = Article.objects.filter(id = id).first()
     article = get_object_or_404(Article,id=id)
-    
+    share_string = quote_plus(article.content)
     comments = article.comments.all()
-    return render(request, "detail.html", {"article": article, "comments":comments})
-
+    context = {
+        'article':article,
+        'share_string':share_string,
+        'comments':comments
+    }
+    
+    return render(request, "detail.html", context)
 @login_required(login_url = "user:login")
 def updateArticle(request, id):
     article = get_object_or_404(Article, id= id)

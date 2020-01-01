@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-
+{% load social_share %}
 <div class="row">
 
     <!-- Post Content Column -->
@@ -33,39 +33,25 @@
       <p class="lead">
           {{article.content|safe}}
       </p>
-        <div class="row omb_row-sm-offset-3 omb_socialButtons">
-          <div class="col-xs-4 col-sm-2">
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-lg btn-block omb_btn-facebook" style="color:#3b5998">
-              <i class="fa fa-facebook visible-xs"></i>
-              <span class="hidden-xs">Facebook</span>
-            </a>
-          </div>
-          <div class="col-xs-4 col-sm-2">
-            <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
-              <i class="fa fa-twitter visible-xs"></i>
-              <span class="hidden-xs">Twitter</span>
-            </a>
-          </div>	
-          <div class="col-xs-4 col-sm-2">
-            <a href="#" class="btn btn-lg btn-block omb_btn-google">
-              <i class="fa fa-google-plus visible-xs"></i>
-              <span class="hidden-xs">Google+</span>
-            </a>
-          </div>	
-    </div>
+      <div class="wrapper">
+        <a target="_blank" href="http://twitter.com/intent/tweet?text={{article.content|truncatewords:200}}&url={{request.build_absolute_uri}}&hashtags=MyNote,NoteApp" class="fa fa-twitter-square fa-3x" style="color:#4099FF"></a> 
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}&title={{article.title}}&summary={{share_string}}&source={{ request.build_absolute_uri }}" target="_blank" class="fa fa-linkedin-square fa-3x" style="color:#007bb6"></a>
+        <a target="_blank" href="https://www.google.com/share?url={{request.build_absolute_uri}}"><i class="fa fa-3x fa-google"style="color:#D34836"></i></a> <!--Google mail hesabina baglanip giris yapmiyor. aslinda ilk ekledigimde calismisti sonra ne oldu anlayamadim.-->
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{share_string}}"><i class="fa fa-3x fa-facebook-square"style="color:#3b5998"></i></a>
+        </div>
+        {% post_to_facebook article_or_url "Post to Facebook!" %}
+        {% post_to_twitter "My Note: {{article.content}} Check it out!" article_or_url "Post to Twitter" %}
+        {% post_to_linkedin object.title article_or_url "Post to LinkedIn" %} 
+        {% send_email object.title "New Song: {{object.title}}. Check it out!" object_or_url "Share via email" %} <!--Burasi mail gonderiyor-Bu kodu bir buttona ekleyebilir ve mail gonder seklinde popover ekleyebilirsek olabilir-->
 
-      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="fa fa-facebook fa-4x" style="color:#3b5998"></a>
-      <a href="https://twitter.com/compose/tweet/?status={{article.title}}text={{article.content}}%20&amp;url={{ request.build_absolute_uri }}"target="_blank" class="fa fa-twitter fa-4x" style="color:#4099FF"></a>
-      <a href="https://www.google.com/share?url={ request.build_absolute_uri }}"  target="_blank" class="fa fa-google fa-4x" style="color:#D34836"></a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }} title={{article.text}}source={{ request.build_absolute_uri }}" target="_blank" class="fa fa-linkedin fa-4x" style="color:#007bb6"></a>  
-      {% load social_share %}
-
-      {% post_to_facebook object_or_url "Post to Facebook!" %}
-      {% post_to_twitter "My Note: {{article.title}} {{article.content}}. Check it out!" object_or_url "Post to Twitter" %}
-      {% post_to_linkedin object.title object_or_url "Post to LinkedIn" %}
-      {% send_email object.title "My Note:{{article.content|safe}}. Check it out!" object_or_url "Share via email" %}
+        <!-- Abi istedigimize en yakin kiism asagidaki uclu. onemli nokta su ki twitterde tweet icerigimizde html kodlari da cikiyor. Linkedinde baska bir sorun var. 
+        Buraya bir de mail gonder secenegini ekleyebilirsek guzel olabilir.-->
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Share in Facebook" data-placement="bottom" style="color:#3b5998"class="mtr-btn button-circle button-fab ripple"><i class="fa fa-facebook-square fa-3x"></i></a>
+        <a href="https://twitter.com/compose/tweet/?text={{ share_string }}%20url={{ request.build_absolute_uri }}&hashtags=MyNote,NoteApp" target="_blank"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Share in Twitter" data-placement="bottom" style="color:#4099FF"class="mtr-btn button-circle button-fab ripple"><i class="fa fa-twitter-square fa-3x"></i></a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ share_string }}source={{ request.build_absolute_uri }}" target="_blank"rel="shared-popover"data-popover-content="#shared-btn-Popover" title="Share in LinkedIn" data-placement="bottom" style="color:#007bb6"class="mtr-btn button-circle button-fab ripple"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            
+      
       <hr>
-
       <h4>Comments</h4>
       <hr>
       <!-- Comments Form -->
@@ -99,7 +85,7 @@
                 <input name="comment_author" type="text" class="form-control" id="formGroupExampleInput" placeholder="Name">
               </div>
               <label for="formGroupExampleInput">Comment</label>
-              <textarea name="comment_content" class="form-control" rows="3" placeholder="Comment"></textarea>
+              <textarea name="comment_content" class="form-control" rows="3" placeholder="Comment">{{article.content}}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Add</button>
           </form>
