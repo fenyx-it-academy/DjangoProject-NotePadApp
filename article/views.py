@@ -105,11 +105,12 @@ def addComment(request, id):
 def nologin(request):
 
     form = ArticleForm(request.POST or None, request.FILES or None)
+    
     if form.is_valid():
         title = form.cleaned_data['title']
         content =form.cleaned_data['content'] 
         article_image = form.cleaned_data['article_image']              
-        args ={"title":title, "content":content, "form": form,"article_image":article_image}        
+        args ={"title":title, "content":content, "form": form,"article_image":article_image}                
         return render(request,"nologin.html", {"args":args})
         #return render(request,"index.html", {"args":args})
     

@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-
+{% load static %}
 {% block body %}
 {% load crispy_forms_tags %}
 <div class="row">
@@ -24,7 +24,7 @@
                 <li>
                 <a href="#">                  
                     <h2>{{ args.title }}</h2>
-                    <p>{{ args.content }}</p>                                       
+                    <p>{{ args.content }}</p>                                      
                 </a>
                 </li>
             </ul> 
