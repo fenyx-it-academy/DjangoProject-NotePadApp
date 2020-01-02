@@ -1,9 +1,11 @@
 from django.shortcuts import render, HttpResponse, redirect,get_object_or_404, reverse
-from .forms import ArticleForm
+from .forms import ArticleForm,FormNologin
 from .models import Article, Comment
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
+from django import forms
 
 
 # Create your views here.
@@ -98,5 +100,21 @@ def addComment(request, id):
         newComment.save()
 
     return redirect(reverse("article:detail",kwargs={"id":id}))
+
+
+def nologin(request):
+
+    form = ArticleForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        title = form.cleaned_data['title']
+        content =form.cleaned_data['content'] 
+        article_image = form.cleaned_data['article_image']              
+        args ={"title":title, "content":content, "form": form,"article_image":article_image}        
+        return render(request,"nologin.html", {"args":args})
+        #return render(request,"index.html", {"args":args})
+    
+    return render(request,"nologin.html",{"form": form})
+    #return render(request,"index.html",{"form": form})
+        
 
 

@@ -9,13 +9,13 @@
         <h3>Create Article</h3>
         <hr>
         <form method = "post">
-                {% csrf_token %}
-                {{form.media}}
-                {{form|crispy}}
-                <br>
-                <button type="submit" class="btn btn-danger">Add Article</button>  
-            </form>
-        </div>
+            {% csrf_token %}
+            {{form.media}}
+            {{form|crispy}}
+            <br>
+            <button type="submit" class="btn btn-danger">Add Article</button>  
+        </form>
     </div>
+</div>
 
 {% endblock body %}

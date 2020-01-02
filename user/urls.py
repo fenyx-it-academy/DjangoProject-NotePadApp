@@ -10,6 +10,6 @@ urlpatterns = [
     path('login/', views.loginUser, name= "login"),
     path('logout/', views.logoutUser, name="logout"),
     path('^password/$', views.change_password, name='change_password'),
-    path(r'^tinymce/', include('tinymce.urls')),
+    
     
 ]

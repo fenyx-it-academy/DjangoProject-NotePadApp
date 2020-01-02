@@ -2,18 +2,34 @@
 
 {% block body %}
 {% load crispy_forms_tags %}
-
-<form action="" method="POST">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h3>Create Article</h3>
-            <hr>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Create Article</h3>
+        <hr>
+        <form method = "post">
             {% csrf_token %}
             {{form.media}}
             {{form|crispy}}
             <br>
-            <button type="submit" class="btn btn-danger">Add Article</button>
+            <button type="submit" class="btn btn-danger">Add Article</button>  
+        </form>
+    </div>
+</div>
+  
+<div class="jumbotron text-center">        
+    <div class="stickies">
+        <div class="container">
+            <!-- Sticky Test -->
+            <ul class='notes'>
+                <li>
+                <a href="#">                  
+                    <h2>{{ args.title }}</h2>
+                    <p>{{ args.content }}</p>                                       
+                </a>
+                </li>
+            </ul> 
         </div>
     </div>
-</form>
+</div>
+
 {% endblock body %}

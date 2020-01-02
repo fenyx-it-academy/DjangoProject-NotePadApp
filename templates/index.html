@@ -1,88 +1,28 @@
 {% extends "layout.html" %}
-{% load static %}
+
 
 {% block body %}
 
-<div class="jumbotron text-center">
-    <div class="stickies">
-            <div class="container">
-                <!-- Text Editor Deneme -->
-                <!--Tinymce Text-Editor (Must be in Head Tag) -->
-                {% include "includes/texteditor.html" %}
-
-                
-
-                <!-- Sticky Test -->
-                <ul class='notes'>
-                    <li>
-                    <a href="#">
-                        <h2>Title #1</h2>
-                        <p>Text Content #1</p>
-                    </a>
-                    </li>
-                    <li>
-                    <a href="#">
-                        <h2>Title #2</h2>
-                        <p>Text Content #2</p>
-                    </a>
-                    </li>
-                    <li>
-                    <a href="#">
-                        <h2>Title #3</h2>
-                        <p>Text Content #3</p>
-                    </a>
-                    </li>
-                    <li>
-                    <a href="#">
-                        <h2>Title #4</h2>
-                        <p>Text Content #4</p>
-                    </a>
-                    </li>
-                    <li>
-                    <a href="#">
-                        <h2>Title #5</h2>
-                        <p>Text Content #5</p>
-                    </a>
-                    </li>
-                    <li>
-                    <a href="#">
-                        <h2>Title #6</h2>
-                        <p>Text Content #6</p>
-                    </a>
-                    </li>
-                    <li>
-                    <a href="#">
-                        <h2>Title #2</h2>
-                        <p>Text Content #2</p>
-                    </a>
-                    </li>
-                    <li>
-                    <a href="#">
-                        <h2>Title #7</h2>
-                        <p>Text Content #7</p>
-                    </a>
-                    </li>
-                    <li>
-                    <a href="#">
-                        <h2>Title #8</h2>
-                        <p>Text Content #8</p>
-                    </a>
-                    </li>
-                </ul>
-
-
-            </div>
-        </div>
-
-
-</div>
-
+{% load crispy_forms_tags %}
 
 <p>
     {% if request.user.is_authenticated %}
             Logged in by {{request.user.username}}
     {% else %}
             Not Logged
+            <div class="row">
+                <div class="col-md-6 offset-md-4">
+                    <h3>Create Article</h3>
+                    <hr>
+                    <form action="{% url 'nologin' %}" method = "post">
+                        {% csrf_token %}
+                        {{form.media}}
+                        {{form|crispy}}
+                        <br>
+                        <button type="submit" class="btn btn-danger">Add Article</button>  
+                    </form>
+                </div>
+            </div>
     {% endif %}
 
 </p>
@@ -91,3 +31,6 @@
     <strong>Total users registered: </strong> {{count}}
 </p>
 {% endblock body %}
+
+
+
