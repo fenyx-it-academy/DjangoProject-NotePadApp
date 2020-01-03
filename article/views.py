@@ -4,7 +4,7 @@ from .models import Article, Comment
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from ckeditor.fields import RichTextField
+# from ckeditor.fields import RichTextField
 from django import forms
 
 
