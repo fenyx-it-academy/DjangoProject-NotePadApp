@@ -23,11 +23,26 @@ def articles(request):
 
 
 def index(request):
-    count = User.objects.count()
-    context = {
-        "count": count
-    }
-    return render(request,"index.html", context)
+    form = ArticleForm(request.POST or None, request.FILES or None)
+    
+    if request.user.is_authenticated:
+        notes = Article.objects.filter(author = request.user)
+        # articles = get_object_or_404(Article,author=request.user)  
+
+        # count = User.objects.count()
+        context = {
+            "notes": notes,
+            # "count": count,
+            "form" : form
+        }
+        return render(request,"index.html", context)
+    else:
+        context = {
+            # "count": count,
+            "form" : form
+        }
+        return render(request,"index.html", context)
+
 
 def about(request):
     return render(request, "about.html")
@@ -51,7 +66,7 @@ def addarticle(request):
         article.save()
 
         messages.success(request, "Article successfully created.")
-        return redirect("article:dashboard")
+        return redirect("/")
 
     return render(request, "addarticle.html", {"form": form})
 
@@ -111,11 +126,11 @@ def nologin(request):
         content =form.cleaned_data['content'] 
         article_image = form.cleaned_data['article_image']              
         args ={"title":title, "content":content, "form": form,"article_image":article_image}                
-        return render(request,"nologin.html", {"args":args})
-        #return render(request,"index.html", {"args":args})
+        return render(request,"index.html", {"args":args})
+        # return redirect("/", {"args":args})
     
-    return render(request,"nologin.html",{"form": form})
-    #return render(request,"index.html",{"form": form})
+    # return render(request,"index.html",{"form": form})
+    return redirect("/")
         
 
 
