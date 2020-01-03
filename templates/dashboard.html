@@ -7,7 +7,7 @@
     Welcome, <small>{{request.user.username}}</small>
 </p>
 <hr>
-<a class="btn btn-danger" href="/articles/addarticle">Add Article</a>
+<a class="btn btn-primary" href="/articles/addarticle">&emsp;Add Note&emsp;</a>
 <hr>
 
 {% if articles %}
@@ -27,11 +27,11 @@
       {% for article in articles %}
       <tr>
           <th scope="row">{{article.id}}</th>
-          <td><a href="/articles/article/{{article.id}}">{{article.title}}</a></td>
+          <td><a href="/articles/article/{{article.id}}" class="text-dark">{{article.title}}</a></td>
           <td>{{article.author.username}}</td>
           <td>{{article.created_date}}</td>
-          <td><a href="/articles/update/{{article.id}}" class = "btn btn-danger">Update</a></td>
-          <td><a href="/articles/delete/{{article.id}}" class = "btn btn-danger">Delete</a></td>
+          <td><a href="/articles/update/{{article.id}}" class = "btn btn-primary">&emsp;Update&emsp;</a></td>
+          <td><a href="/articles/delete/{{article.id}}" class = "btn btn-primary">&emsp;Delete&emsp;</a></td>
   
       </tr>
       {% endfor %}
@@ -40,7 +40,7 @@
 {% else %}
 
 <div class = " alert alert-danger">
-  You haven't article yet.
+  You haven't Note yet.
 </div>
 {% endif %}
 

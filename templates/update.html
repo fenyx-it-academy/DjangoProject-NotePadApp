@@ -6,14 +6,14 @@
 
 <div class="row">
     <div class="col-md-6 offset-md-3">
-        <h3>Update Article</h3>
+        <h3>Update Note</h3>
         <hr>
         <form method = "post">
             {% csrf_token %}
             {{form.media}}
             {{form|crispy}}
             <br>
-            <button type="submit" class="btn btn-danger">Update Article</button>  
+            <button type="submit" class="btn btn-danger">Update Note</button>  
         </form>
     </div>
 </div>
