@@ -17,7 +17,7 @@ def register(request):
             newUser.set_password(password)
 
             newUser.save()
-            login(request, newUser, backend='django.contrib.auth.backends.ModelBackend')
+            login(request, newUser)
             messages.info(request, "You are successfully registered.")
 
             return redirect("index")
