@@ -4,15 +4,14 @@
 
 <hr>
 
-<h4>Change Username</h4><br>
+<h4>Change Profile Detail</h4><br>
 
 <hr>
 
 <form method="post">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Save changes</button>
   </form>
-
 
 {% endblock body %}
