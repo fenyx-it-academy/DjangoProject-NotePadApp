@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'article',
     'user',
     'crispy_forms',
-    'django_cleanup.apps.CleanupConfig',
     'django_cleanup',
     'social_django',
     'django_social_share',
