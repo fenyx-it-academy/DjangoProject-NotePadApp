@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% load crispy_forms_tags %}
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Profil</h3>
+        <hr>
+        <div class="mx-auto" style="width: 200px;">
+  
+            <form class="form-inline">
+              <td>
+                  <a class="btn btn-danger btn-lg btn-block" href="{% url 'user:change_password' %}">Change Password</a>
+                  <a class="btn btn-primary btn-lg btn-block" href="{% url 'user:change_username' %}">Change Profile</a>
+              </td>
+            </form>
+            </div>
+            
+        </div>
+    </div>
+
+{% endblock body %}
