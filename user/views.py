@@ -6,40 +6,17 @@ from django.contrib.auth import login, authenticate, logout, update_session_auth
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm, UserChangeForm
 from django.template import RequestContext
 
-#from django.contrib.auth import views as auth_views
 
 # Create your views here.
 
 def register(request):
-
-    """form = RegisterForm(request.POST or None)
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
 
-            newUser = User(username = username)
-            newUser.set_password(password)
-
-            newUser.save()
-            login(request, newUser)
-
-            return redirect("index")
-
-        context = {
-            "form": form
-        }
-        return render(request, "register.html", context)""" 
-
-
-    if request.method == "POST":
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
-
-            newUser = User(username = username)
+            newUser = User(username = username, password = password)
             newUser.set_password(password)
 
             newUser.save()
@@ -59,6 +36,8 @@ def register(request):
             "form": form
         }
         return render(request, "register.html", context)
+
+
 
 def loginUser(request):
     form = LoginForm(request.POST or None)
@@ -128,7 +107,7 @@ def change_username(request):
 
 def Account(request):
     if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
+        form = PasswordChangeForm(request.user)
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)            # Important!
