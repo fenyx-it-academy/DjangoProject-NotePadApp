@@ -70,7 +70,7 @@
 
                                 </div>
 
-                                    <div id="demo" class="collapse">
+                                    <div class="collapse" id="demo">
 
                                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Share in Facebook" data-placement="bottom" style="color:#3b5998"class="mtr-btn button-circle button-fab ripple"><i class="fab fa-facebook-square fa-3x"></i></a>
 
@@ -91,9 +91,10 @@
                         <!-- Modal bitti -->
 
 
-                                            {% endfor %}
-                                            
-                                        {% endif %}                    
+                    {% endfor %}
+
+                {% endif %}  
+                              
                                     </div> 
                                             
                             </div>

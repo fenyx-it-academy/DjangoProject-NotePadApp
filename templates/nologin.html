@@ -11,25 +11,123 @@
             {{form.media}}
             {{form|crispy}}
             <br>
-            <button type="submit" class="btn btn-danger">Add Note</button>  
+            
+
+
+<div class="container1">                
+                
+                                          
+                        <div class="note">                                                  
+                            {% comment %} <a href="/articles/update/{{ note.id }}"> {% endcomment %}
+                            <a data-toggle="modal" data-target="#myModal">
+                                <h1>{{ args.title }}</h1>
+                                <p>{{ args.content }}</p>
+                            </a>                                    
+                        </div>
+                    <!-- Modal buraya eklenebilir -->
+
+
+                        <div class="modal fade" id="myModal" role="dialog">
+
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+
+                                <div class="modal-content" style="background-color:#ffc;">
+
+                                <div class="modal-header">
+                                    <h3 style="color:red; font-size:24px; text-align:center;">To use the functions, you must register. Buttons will not work now.</h3>
+
+                                    <button type="button" class="close"  data-dismiss="modal">&times;</button>        
+
+                                    </div> 
+
+                                
+
+                                
+
+                                <div class="modal-footer">
+
+                                    <a href="/user/register"><button type="button" class="btn btn-primary">Register Here</button></a>
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#">Share</button>
+
+                                    <a href="#"><button type="button" class="btn btn-success">Update</button></a>    
+                                    <a href="#"><button type="button" class="btn btn-danger">Delete</button></a>
+        
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>    
+
+                                </div>
+
+                                    <div class="collapse" id="demo">
+
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Share in Facebook" data-placement="bottom" style="color:#3b5998"class="mtr-btn button-circle button-fab ripple"><i class="fab fa-facebook-square fa-3x"></i></a>
+
+                                        <a href="https://twitter.com/compose/tweet/?text={{ share_string }}%20url={{ request.build_absolute_uri }}&hashtags=MyNote,NoteApp" target="_blank"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Share in Twitter" data-placement="bottom" style="color:#4099FF"class="mtr-btn button-circle button-fab ripple"><i class="fab fa-twitter-square fa-3x"></i></a>
+
+                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ share_string }}source={{ request.build_absolute_uri }}" target="_blank"rel="shared-popover"data-popover-content="#shared-btn-Popover" title="Share in LinkedIn" data-placement="bottom" style="color:#007bb6"class="mtr-btn button-circle button-fab ripple"><i class="fab fa-linkedin fa-3x"></i></a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            </div>
+
+
+
+                        <!-- Modal bitti -->
+
+
+                
+
+            
+                              
+                                    </div> 
+                                            
+                            </div>
+                            <div class="clear"></div>  
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </form>
     </div>
 </div>
   
-<div class="jumbotron text-center">        
-    <div class="stickies">
-        <div class="container">
-            <!-- Sticky Test -->
-            <ul class='notes'>
-                <li>
-                <a href="#">                  
-                    <h2>{{ args.title }}</h2>
-                    <p>{{ args.content }}</p>                                      
-                </a>
-                </li>
-            </ul> 
-        </div>
-    </div>
-</div>
+
 
 {% endblock body %}
