@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-
+{% load socialaccount %}
 {% load crispy_forms_tags %}
 
 
@@ -14,7 +14,13 @@
 
                 {{form|crispy}}
                 <br>
-                <button type="submit" class="btn btn-primary">&emsp;&emsp;Register&emsp;&emsp;</button>  
+                <button type="submit" class="btn btn-danger">Enter</button>
+                <p>Or Register With</p>
+                <div class="wrapper">
+                    <a target="_blank" href="{% url 'social:begin' 'github' %}"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Register with GitHub" data-placement="bottom" style="color:#24292e"class="mtr-btn button-circle button-fab ripple"><i class="fa  fa-3x fa-github"></i></a>
+                    <a target="_blank" href="{% url 'social:begin' 'facebook' %}"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Register with Facebook" data-placement="bottom" style="color:#3b5998"class="mtr-btn button-circle button-fab ripple"><i class="fa fa-facebook-square fa-3x"></i></a>
+                    <a target="_blank" href="{% url 'social:begin' 'twitter' %}"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Register with Twitter" data-placement="bottom" style="color:#4099FF"class="mtr-btn button-circle button-fab ripple"><i class="fa fa-twitter-square fa-3x"></i></a>
+                </div></a>
             </form>
         </div>
     </div>

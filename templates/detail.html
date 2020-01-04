@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
+{% load social_share %}
 
 <div class="row">
 
@@ -33,8 +34,13 @@
       <p class="lead">
           {{article.content|safe}}
       </p>
+        
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Share in Facebook" data-placement="bottom" style="color:#3b5998"class="mtr-btn button-circle button-fab ripple"><i class="fa fa-facebook-square fa-3x"></i></a>
+        <a href="https://twitter.com/compose/tweet/?text={{ article.content|truncatewords:500 }}%20url={{ request.build_absolute_uri }}&hashtags=MyNote,NoteApp" target="_blank"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Share in Twitter" data-placement="bottom" style="color:#4099FF"class="mtr-btn button-circle button-fab ripple"><i class="fa fa-twitter-square fa-3x"></i></a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ article.title }}source={{ request.build_absolute_uri }}" target="_blank"rel="shared-popover"data-popover-content="#shared-btn-Popover" title="Share in LinkedIn" data-placement="bottom" style="color:#007bb6"class="mtr-btn button-circle button-fab ripple"><i class="fa fa-linkedin-square fa-3x"></i></a>
+        <a href="mailto:?subject=Note-{{article.title}}&body={{article.content}}-Click the link for see all notes:{{request.build_absolute_uri}}" target="_blank"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Share via email" data-placement="bottom" style="color:#D34836"class="mtr-btn button-circle button-fab ripple"><i class="fa fa-envelope-square fa-3x"></i></a>    
+      
       <hr>
-
       <h4>Comments</h4>
       <hr>
       <!-- Comments Form -->
@@ -77,3 +83,5 @@
 </div>
 
 {% endblock body %}
+
+

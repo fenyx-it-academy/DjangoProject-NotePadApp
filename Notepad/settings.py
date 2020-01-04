@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -42,7 +43,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     'ckeditor',
     'django_cleanup',
-    
+    'social_django',
+    'django_social_share',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',  
 
 ]
 
@@ -55,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'Notepad.urls'
@@ -71,10 +78,22 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'social_django.context_processors.backends',  # <-- Here
+                'social_django.context_processors.login_redirect', # <-- Here
+                
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.github.GithubOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 WSGI_APPLICATION = 'Notepad.wsgi.application'
 
@@ -129,7 +148,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "Notepad/static"),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
@@ -154,4 +173,38 @@ EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
 
-#LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'index'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '595472501279504'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'f98df57bf192893821bed115f6d44f02'  # App Secret
+
+SOCIAL_AUTH_GITHUB_KEY = '27ec9434a9c383f31a43'
+SOCIAL_AUTH_GITHUB_SECRET = '5eae5602cabbe6e453e83e9945a091b7b14c7a44'
+
+SOCIAL_AUTH_TWITTER_KEY = 'bWdXZUpnoDi1Gb8L1nxA3ebWC'
+SOCIAL_AUTH_TWITTER_SECRET = 'iI4lY1JcvCnATNIqRvwMqh6RwvBP31eKhd0MSxUULZp7faYyuR'
+
+SITE_ID = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

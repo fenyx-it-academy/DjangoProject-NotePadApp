@@ -2,8 +2,6 @@
 
 {% block body %}
 
-
-
 <div class="row">
     <div class="col-md-10 offset-md-3">
       <div class="col-lg-8">
@@ -12,7 +10,6 @@
       </div>
     </div>
 </div>
-
 
 <!-- Search form -->
 <div class="row">
@@ -62,9 +59,10 @@
 
       <!-- Post Content -->
       <p class="lead">
-          {{article.content|safe|truncatewords:10}}
+          {{article.content|safe|truncatewords:10}} 
       </p>
       <a style="float: right" href="{% url 'article:detail' article.id %}" class="btn btn-danger">Continue Read</a>
+      <br>
       <hr>
 
       <!-- Comments Form >
