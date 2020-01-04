@@ -3,14 +3,14 @@
   background:url('https://www.memonotepad.com/img/wood.png');
 }
  .bod{
-  background:url('https://www.memonotepad.com/img/wood.png');
+  background:src("media/wood.png");
 }
 .bodylayout{
-  background:url('https://www.memonotepad.com/img/wood.png');
+  background:src("media/wood.png");
 }
 
 .boxx{
-  background: url('https://www.memonotepad.com/img/wood.png');
+  /* background: src("media/wood.png"); */
   border: solid 1px slategray;
   
   
@@ -52,6 +52,10 @@
 }
 .note h1{
   font-weight: bold;
+}
+h3{
+  font-family: 'Indie Flower', cursive;
+  font-size: 30px;
 }
 
 .note a:hover,.note a:focus{

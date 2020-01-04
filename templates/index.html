@@ -7,7 +7,7 @@
 <div class="bod">
     <div class="boxx">
         <div class="col-md-10 offset-md-1"><br><br>
-            <h3>Create Note</h3>
+            <h3 style="font-family: 'Indie Flower', cursive; font-size: 36px; font-weight:bold;">Create Note</h3>
             <hr>
             {% if request.user.is_authenticated %}
             <form action="{% url 'article:addarticle' %}" method = "post">
@@ -15,7 +15,7 @@
             <form action="{% url 'nologin' %}" method = "post">
             {% endif %}
                 {% csrf_token %}
-                {{form.media}}
+                {{ form.media}}
                 {{form|crispy}}
                 <br>
                 <button type="submit" class="btn btn-primary">&emsp;Add New Note &emsp;  </button>  
@@ -26,7 +26,7 @@
                 {% if request.user.is_authenticated %}
                     {% for note in notes %}                        
                         <div class="note">                                                  
-                            <a href="">
+                            <a href="/articles/update/{{ note.id }}">
                                 <h1>{{ note.title }}</h1>
                                 <p>{{ note.content }}</p>
                             </a>                                    
