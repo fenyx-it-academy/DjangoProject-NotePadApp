@@ -26,8 +26,10 @@
                 {% if request.user.is_authenticated %}
                     {% for note in notes %}                        
                         <div class="note">                                                  
-                            <h2>{{ note.title }}</h2>
-                            <p>{{ note.content }}</p>                                    
+                            <a href="">
+                                <h1>{{ note.title }}</h1>
+                                <p>{{ note.content }}</p>
+                            </a>                                    
                         </div>                                               
                     {% endfor %}
                 {% endif %}                    
