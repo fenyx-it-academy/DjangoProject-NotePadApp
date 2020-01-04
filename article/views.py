@@ -87,7 +87,7 @@ def updateArticle(request, id):
         article.save()
 
         messages.success(request, "Article successfully updated.")
-        return redirect("article:dashboard")            # article altindaki dashboard url sine git demek istiyoruz
+        return redirect("/")            # article altindaki dashboard url sine git demek istiyoruz
 
     return render(request, "update.html", {"form":form})
 
