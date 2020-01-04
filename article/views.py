@@ -99,7 +99,7 @@ def deleteArticle(request, id):
 
     messages.success(request, "Article successfully deleted.")
 
-    return redirect("article:dashboard")            # article altindaki dashboard url sine git demek istiyoruz
+    return redirect("/")            # article altindaki dashboard url sine git demek istiyoruz
 
 
 def addComment(request, id):
