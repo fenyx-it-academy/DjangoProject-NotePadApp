@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'article',
     'user',
     'crispy_forms',
-    'ckeditor',
     'django_cleanup',
     'social_django',
     'django_social_share',
@@ -153,14 +152,6 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-CKEDITOR_CONFIGS ={
-    "default": {
-        "removePlugins": "stylesheetparser",
-        "allowedContent": True,
-        "width": "100%",
-    }
-}
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

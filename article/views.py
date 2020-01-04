@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect,get_object_or_404, reverse
 from .forms import ArticleForm,FormNologin
-from .models import Article, Comment
+from .models import Article
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -74,17 +74,15 @@ def addarticle(request):
     return render(request, "addarticle.html", {"form": form})
 
 def detail(request, id):
-    #article = Article.objects.filter(id = id).first()
     article = get_object_or_404(Article,id=id)
     share_string = quote_plus(article.content)
-    comments = article.comments.all()
     context = {
         'article':article,
         'share_string':share_string,
-        'comments':comments
     }
     
     return render(request, "detail.html", context)
+    
 @login_required(login_url = "user:login")
 def updateArticle(request, id):
     article = get_object_or_404(Article, id= id)
@@ -108,21 +106,6 @@ def deleteArticle(request, id):
     messages.success(request, "Article successfully deleted.")
 
     return redirect("/")            # article altindaki dashboard url sine git demek istiyoruz
-
-
-def addComment(request, id):
-    article = get_object_or_404(Article, id=id)
-
-    if request.method == "POST":
-        comment_author = request.POST.get("comment_author")
-        comment_content = request.POST.get("comment_content")
-
-        newComment = Comment(comment_author= comment_author, comment_content= comment_content)
-
-        newComment.article = article
-        newComment.save()
-
-    return redirect(reverse("article:detail",kwargs={"id":id}))
 
 
 def nologin(request):
