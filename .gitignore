@@ -11,3 +11,4 @@ db.sqlite3-journal
 venv
 /static
 /staticfiles
+*sqlite3
