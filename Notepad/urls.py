@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from article import views
+from django.shortcuts import render, HttpResponse
 
 
 urlpatterns = [
@@ -29,6 +30,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('allauth.urls')),
     path('oauth/', include('social_django.urls', namespace='social')),
+    path('nologin/',views.nologin, name="nologin"),
     
 ]
 

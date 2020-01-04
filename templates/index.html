@@ -1,24 +1,44 @@
 {% extends "layout.html" %}
 
+
 {% block body %}
 
-<div class="jumbotron text-center">
-    <h3>Welcome to Py[coders] django Notepad page</h3>
-    <p>>>> We are waiting to write code as code developers <<<</p>
-
+{% load crispy_forms_tags %}
+<div class="bod">
+    <div class="boxx">
+        <div class="col-md-10 offset-md-1"><br><br>
+            <h3 style="font-family: 'Indie Flower', cursive; font-size: 36px; font-weight:bold;">Create Note</h3>
+            <hr>
+            {% if request.user.is_authenticated %}
+            <form action="{% url 'article:addarticle' %}" method = "post">
+            {% else %}
+            <form action="{% url 'nologin' %}" method = "post">
+            {% endif %}
+                {% csrf_token %}
+                {{ form.media}}
+                {{form|crispy}}
+                <br>
+                <button type="submit" class="btn btn-primary">&emsp;Add New Note &emsp;  </button>  
+            </form><br><br><br><br>
+        </div> 
+            <!-- Sticky Test -->
+            <div class="container1">                
+                {% if request.user.is_authenticated %}
+                    {% for note in notes %}                        
+                        <div class="note">                                                  
+                            <a href="/articles/update/{{ note.id }}">
+                                <h1>{{ note.title }}</h1>
+                                <p>{{ note.content }}</p>
+                            </a>                                    
+                        </div>                                               
+                    {% endfor %}
+                {% endif %}                    
+            </div> 
+                     
+    </div>
+    <div class="clear"></div>  
 </div>
-
-
-<p>
-    {% if request.user.is_authenticated %}
-            Logged in by {{request.user.username}}
-    {% else %}
-            Not Logged
-    {% endif %}
-
-</p>
-
-<p>
-    <strong>Total users registered: </strong> {{count}}
-</p>
 {% endblock body %}
+
+
+

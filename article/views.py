@@ -1,14 +1,13 @@
 from django.shortcuts import render, HttpResponse, redirect,get_object_or_404, reverse
-from .forms import ArticleForm
+from .forms import ArticleForm,FormNologin
 from .models import Article, Comment
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from urllib.parse import quote_plus 
+from django import forms
 
 
-
-# Create your views here.
 
 def articles(request):
     keyword = request.GET.get("keyword")
@@ -27,16 +26,31 @@ def articles(request):
 
 
 def index(request):
-    count = User.objects.count()
-    context = {
-        "count": count
-    }
-    return render(request,"index.html", context)
+    form = ArticleForm(request.POST or None, request.FILES or None)
+    
+    if request.user.is_authenticated:
+        notes = Article.objects.filter(author = request.user)
+        # articles = get_object_or_404(Article,author=request.user)  
+
+        # count = User.objects.count()
+        context = {
+            "notes": notes,
+            # "count": count,
+            "form" : form
+        }
+        return render(request,"index.html", context)
+    else:
+        context = {
+            # "count": count,
+            "form" : form
+        }
+        return render(request,"index.html", context)
+
 
 def about(request):
     return render(request, "about.html")
 
-@login_required(login_url = "user:login")                              # user disinda birinin linklere girmesiyle yonlendirilecek sayfa icin
+@login_required(login_url = "user:login")        # user disinda birinin linklere girmesiyle yonlendirilecek sayfa icin
 def dashboard(request):
     articles = Article.objects.filter(author = request.user)
     context = {
@@ -55,7 +69,7 @@ def addarticle(request):
         article.save()
 
         messages.success(request, "Article successfully created.")
-        return redirect("article:dashboard")
+        return redirect("/")
 
     return render(request, "addarticle.html", {"form": form})
 
@@ -81,7 +95,7 @@ def updateArticle(request, id):
         article.save()
 
         messages.success(request, "Article successfully updated.")
-        return redirect("article:dashboard")            # article altindaki dashboard url sine git demek istiyoruz
+        return redirect("/")            # article altindaki dashboard url sine git demek istiyoruz
 
     return render(request, "update.html", {"form":form})
 
@@ -109,5 +123,22 @@ def addComment(request, id):
         newComment.save()
 
     return redirect(reverse("article:detail",kwargs={"id":id}))
+
+
+def nologin(request):
+
+    form = ArticleForm(request.POST or None, request.FILES or None)
+    
+    if form.is_valid():
+        title = form.cleaned_data['title']
+        content =form.cleaned_data['content'] 
+        article_image = form.cleaned_data['article_image']              
+        args ={"title":title, "content":content, "form": form,"article_image":article_image}                
+        return render(request,"index.html", {"args":args})
+        # return redirect("/", {"args":args})
+    
+    # return render(request,"index.html",{"form": form})
+    return redirect("/")
+        
 
 
