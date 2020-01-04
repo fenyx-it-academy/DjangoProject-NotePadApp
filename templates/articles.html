@@ -2,8 +2,6 @@
 
 {% block body %}
 
-
-
 <div class="row">
     <div class="col-md-10 offset-md-3">
       <div class="col-lg-8">
@@ -12,7 +10,6 @@
       </div>
     </div>
 </div>
-
 
 <!-- Search form -->
 <div class="row">
@@ -62,9 +59,19 @@
 
       <!-- Post Content -->
       <p class="lead">
-          {{article.content|safe|truncatewords:10}}
+          {{article.content|safe|truncatewords:10}} 
       </p>
+      <button disabled="disabled">Share With:</button><br>
       <a style="float: right" href="{% url 'article:detail' article.id %}" class="btn btn-danger">Continue Read</a>
+      
+      <br>
+      
+      <div class="wrapper">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}} title={{article.title}}&summary={{share_string}}&source={{ request.build_absolute_uri }}" target="_blank" class="fa fa-linkedin-square fa-3x" style="color:#007bb6"></a>
+        <a target="_blank" href="https://www.google.com/share?url={{request.build_absolute_uri}}"><i class="fa fa-3x fa-google"style="color:#D34836"></i></a>
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{share_string}}"><i class="fa fa-3x fa-facebook-square"style="color:#3b5998"></i></a>
+        <a target="_blank" href="https://twitter.com/home?status={{share_string}} %20{{request.build_absolute_uri}}" text='{{share_string}}'> <i class="fa fa-3x fa-twitter-square"style="color:#4099FF"></i>
+    </div></a>
       <hr>
 
       <!-- Comments Form >
