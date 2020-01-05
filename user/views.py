@@ -19,7 +19,7 @@ def register(request):
 
             newUser.save()
             login(request, newUser, backend='django.contrib.auth.backends.ModelBackend')
-            messages.info(request, "Your registration is successfull...")
+            messages.success(request, "Your registration is successfull...")
 
             return redirect("index")
 

@@ -20,7 +20,7 @@
         {% include "includes/navbar.html" %}
         
                 
-        <div style = "margin-top : 0px; margin-bottom:100px;" class= "container">
+        <div style = "margin-top : 0px; margin-bottom:100px;" id="message" class= "container">
         {% if messages %}
             {% for message in messages %}
                 {% if message.tags == "info" %}
