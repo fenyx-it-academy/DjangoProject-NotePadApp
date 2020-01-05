@@ -12,3 +12,4 @@ venv
 /static
 /staticfiles
 *sqlite3
+.vscode

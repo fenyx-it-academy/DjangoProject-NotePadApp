@@ -7,8 +7,6 @@ from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm, User
 from django.template import RequestContext
 
 
-# Create your views here.
-
 def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -75,7 +73,7 @@ def change_password(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)            # Important!
-            messages.success(request, 'Your password was successfully updated!')
+            messages.success(request, 'Your password is successfully updated!')
             return redirect('index')
         else:
             messages.error(request, 'Please correct the error below.')
@@ -94,7 +92,7 @@ def change_username(request):
         if form.is_valid():
             user_save = form.save()
             update_session_auth_hash(request, user_save)            # Important!
-            messages.success(request, 'Your username was successfully updated!')
+            messages.success(request, 'Your username is successfully updated!')
             return redirect('index')
         else:
             messages.error(request, 'Please correct the error below.')
@@ -111,7 +109,7 @@ def Account(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)            # Important!
-            messages.success(request, 'Your password was successfully updated!')
+            messages.success(request, 'Your password is successfully updated!')
             return redirect('index')
         else:
             messages.error(request, 'Please correct the error below.')
