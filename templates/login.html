@@ -1,10 +1,15 @@
 {% extends "layout.html" %}
+<<<<<<< HEAD
 
 {% block body %}
 {% load socialaccount %}
 {% load crispy_forms_tags %}
+=======
+>>>>>>> yedek
 
+{% load crispy_forms_tags %}
 
+{% block body %}
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h3>Sign in</h3>
@@ -15,12 +20,15 @@
                 <br>
                 <button type="submit" class="btn btn-danger">Enter</button>  
                 <a class="nav-brand" href="{% url 'password_reset' %}">&nbsp;&nbsp;&nbsp;&nbsp;Forget your Password?</a><br><br>
-                <p><strong>OR Sign In With</strong></p>
+                <p><strong>or sign in with</strong></p>
                 <div class="wrapper">
                         <a target="_blank" href="{% url 'social:begin' 'github' %}"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Login with GitHub" data-placement="bottom" style="color:#24292e"class="mtr-btn button-circle button-fab ripple"><i class="fa  fa-3x fa-github"></i></a>
                         <a target="_blank" href="{% url 'social:begin' 'facebook' %}"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Login with Facebook" data-placement="bottom" style="color:#3b5998"class="mtr-btn button-circle button-fab ripple"><i class="fa fa-facebook-square fa-3x"></i></a>
                         <a target="_blank" href="{% url 'social:begin' 'twitter' %}"rel="shared-popover" data-popover-content="#shared-btn-Popover" title="Login with Twitter" data-placement="bottom" style="color:#4099FF"class="mtr-btn button-circle button-fab ripple"><i class="fa fa-twitter-square fa-3x"></i></a>
                 </div></a>
+                <small class='text-muted ml-2'>
+                    <a href="{% url 'password_reset' %}" class="card-link">Forgot Password?</a>
+                </small>
             </form>
         </div>
     </div>

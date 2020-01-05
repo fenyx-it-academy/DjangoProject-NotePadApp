@@ -14,6 +14,7 @@ class ArticleAdmin(admin.ModelAdmin):
     search_fields = ["title"]                               # admin panelinde arama ozelligi olusturmak icin
     
     list_filter = ["created_date"]                          # olusturma tarihine gore filtre olusturmak icin baska biseyede yapabiliiriz
+    
     class Meta:                         # bunu yapma sebebimiz yukardaki article ile baglamaktir
         model = Article
 
