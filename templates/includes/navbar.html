@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">Py[coders] Notepad</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            
+          </ul>
+          
+          <!--form class="form-inline my-2 my-lg-0">
+            
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form-->
+        </div>
+          <ul class="navbar-nav mr-auto">
+          {% if request.user.is_authenticated %}
+            <li class="nav-item active">
+              <a href="{% url 'article:dashboard' %}" class="nav-link text-white">Control Panel</a>
+            </li>
+            <li class="nav-item active">
+              <a href="{% url 'user:account' %}" class="nav-link text-white">Account</a>
+            </li>
+            <li class="nav-item active">
+                <a href="{% url 'user:logout' %}" class="nav-link text-white">Logout</a>
+              </li>
+          {% else %}
+            <li class="nav-item active">
+                <a href="{% url 'user:login' %}"  class="nav-link text-white">Login</a>
+              </li>
+              <li class="nav-item active">
+                <a href="{% url 'user:register' %}" class="nav-link text-white">Register</a>
+              </li>
+          {% endif %}
+
+          </ul>   
+       
+</nav>
